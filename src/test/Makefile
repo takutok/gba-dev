@@ -1,20 +1,20 @@
 TARGET = main
 VBAFLAGS = -0
 
-DEVKITPATH = ../../devkitadv/bin/
-LIBGBA = ../../libgba/lib/
+DEVKITPATH = ../../devkitadv/
+LIBGBA = ../../libgba/
 BASFILEPATH = ../../basfiles/
 
-CC = $(DEVKITPATH)arm-agb-elf-gcc
-LD = $(DEVKITPATH)arm-agb-elf-gcc
-AS = $(DEVKITPATH)arm-agb-elf-as
-OBJCOPY = $(DEVKITPATH)arm-agb-elf-objcopy
+CC = $(DEVKITPATH)bin/arm-agb-elf-gcc
+LD = $(DEVKITPATH)bin/arm-agb-elf-gcc
+AS = $(DEVKITPATH)arm-agb-elf/bin/as
+OBJCOPY = $(DEVKITPATH)bin/arm-agb-elf-objcopy
 
 CFLAGS	= -c -Wall -marm -fomit-frame-pointer -O0 $(INCPATH) -DDEBUG
 MODEL = -mthumb -mthumb-interwork
 
-INCPATH = -I$(LIBGBA)
-LIBPATH = -L$(LIBVBA)
+INCPATH = -I$(BASFILEPATH)  -I$(LIBGBA)include/
+LIBPATH = -L$(BASFILEPATH) -L$(LIBGBA)lib/
 LDFLAGS = -T$(BASFILEPATH)lnkscript
 LIBFILE = -lstd -lgba
 
